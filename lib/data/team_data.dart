@@ -46,9 +46,10 @@ class TeamData {
           role: "组员",
           task: "小组成员卡片页、实验任务列表页、README文档完善",
           bio: "云南大学 2024级 计算机科学与技术。"
-              "熟悉C/C++、数据结构与算法，在校期间获得算法竞赛二等奖。"
-              "正在学习Java后端技术栈，对移动应用开发有浓厚兴趣。",
-          skills: ["C/C++", "数据结构", "算法", "Java", "Flutter", "Git"],
+              "熟悉C/C++、FPGA数字逻辑设计（Vivado/Quartus），"
+              "已完成单周期MIPS CPU设计与74系列数字逻辑实验。"
+              "掌握Flutter移动端开发，参与大创项目「安鑫e伴」（反诈骗方向）。",
+          skills: ["C/C++", "FPGA", "Flutter", "Android", "Git", "Java"],
           avatarUrl: "",
           githubUrl: "https://github.com/liyanbin2006",
         ),
@@ -161,7 +162,8 @@ class TeamData {
           version: "v1.0.1",
           date: "2026-06-16",
           title: "成员数据与任务完善",
-          description: "补充3人小组成员信息（温道庚、李炎彬、胡城瑞）。"
+          description: "补充3人小组成员信息（温道庚、李炎彬、胡城瑞），"
+              "李炎彬完成成员卡片页与发布说明数据填充。"
               "完善实验任务分工列表，添加完成状态标识与负责人信息。",
           type: ReleaseNoteType.deploy,
         ),
