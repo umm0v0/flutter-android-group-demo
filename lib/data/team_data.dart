@@ -59,8 +59,9 @@ class TeamData {
           task: "测试设备信息页、环境配置说明、运行证据整理",
           bio: "云南大学 2024级 计算机科学与技术。"
               "具备扎实的编程基础，熟悉Python与计算机组成原理。"
-              "对Android系统调试与移动端测试有实践经验。",
-          skills: ["Python", "Android", "ADB", "Git", "Linux"],
+              "对Android系统调试与移动端测试有实践经验。
+              熟练使用Flutter",
+          skills: ["Python", "Android", "ADB", "Git", "Linux","Flutter"],
           avatarUrl: "",
           githubUrl: "https://github.com/a5077",
         ),
