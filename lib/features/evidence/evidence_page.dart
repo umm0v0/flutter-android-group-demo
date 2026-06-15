@@ -128,42 +128,89 @@ class _PhotoGrid extends StatelessWidget {
       crossAxisSpacing: 12,
       mainAxisSpacing: 12,
       childAspectRatio: 0.75,
-      children: const [
-        _PhotoPlaceholder(label: "照片1", desc: "应用启动页面"),
-        _PhotoPlaceholder(label: "照片2", desc: "实验概述页面"),
-        _PhotoPlaceholder(label: "照片3", desc: "小组成员列表"),
-        _PhotoPlaceholder(label: "照片4", desc: "运行任务列表"),
+      children: [
+        _PhotoCard(imagePath: "images/photo1.jpg", label: "照片1", desc: "应用启动页面"),
+        _PhotoCard(imagePath: "images/photo2.jpg", label: "照片2", desc: "实验概述页面"),
+        _PhotoCard(imagePath: "images/photo3.jpg", label: "照片3", desc: "小组成员列表"),
+        _PhotoCard(imagePath: "images/photo4.jpg", label: "照片4", desc: "运行任务列表"),
       ],
     );
   }
 }
 
-class _PhotoPlaceholder extends StatelessWidget {
+class _PhotoCard extends StatelessWidget {
+  final String imagePath;
   final String label;
   final String desc;
-  const _PhotoPlaceholder({required this.label, required this.desc});
+  const _PhotoCard({required this.imagePath, required this.label, required this.desc});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainerHighest.withAlpha(100),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: Theme.of(context).colorScheme.outlineVariant.withAlpha(80),
         ),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: Stack(
+        fit: StackFit.expand,
         children: [
-          Icon(Icons.image, size: 40, color: Theme.of(context).colorScheme.onSurface.withAlpha(80)),
-          const SizedBox(height: 8),
-          Text(label, style: Theme.of(context).textTheme.labelMedium?.copyWith(
-            color: Theme.of(context).colorScheme.onSurface.withAlpha(180),
-          )),
-          Text(desc, style: Theme.of(context).textTheme.labelSmall?.copyWith(
-            color: Theme.of(context).colorScheme.onSurface.withAlpha(120),
-          )),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(11),
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) => Container(
+                color: Theme.of(context).colorScheme.surfaceContainerHighest.withAlpha(100),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.broken_image, size: 36, color: Theme.of(context).colorScheme.onSurface.withAlpha(80)),
+                    const SizedBox(height: 6),
+                    Text(label, style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface.withAlpha(180),
+                    )),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.transparent,
+                    Colors.black.withAlpha(140),
+                  ],
+                ),
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(11),
+                  bottomRight: Radius.circular(11),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(label, style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                  )),
+                  Text(desc, style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                    color: Colors.white.withAlpha(200),
+                  )),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
