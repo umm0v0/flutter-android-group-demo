@@ -152,7 +152,7 @@ git push origin feature/<your-feature>
 | 照片1 | 应用启动页面展示 | ![](images/photo1.jpg) |
 | 照片2 | 小组成员展示页 | ![](images/photo2.jpg) |
 | 照片3 | 实验任务列表展示页 | ![](images/photo3.jpg) |
-| 照片4 | 实验概述页面展示 | ![](images/photo4.jpg) |
+| 照片4 | 实验设备页面展示 | ![](images/photo4.jpg) |
 
 ### 照片存放路径
 照片存放于项目根目录 `images/` 文件夹中。
