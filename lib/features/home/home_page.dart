@@ -2,20 +2,16 @@ import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:group_flutter_pages_demo/data/team_data.dart";
 import "package:group_flutter_pages_demo/data/repositories/team_repository.dart";
+import "package:group_flutter_pages_demo/data/repositories/team_repository_remote.dart";
 import "package:group_flutter_pages_demo/features/home/widgets/hero_section.dart";
 import "package:group_flutter_pages_demo/features/home/widgets/features_section.dart";
 import "package:group_flutter_pages_demo/shared/widgets/section_header.dart";
 import "package:group_flutter_pages_demo/core/theme/app_colors.dart";
 
 final teamDataProvider = FutureProvider<TeamPageData>((ref) async {
-  await Future<void>.delayed(const Duration(milliseconds: 500));
-  return TeamPageData(
-    projectTitle: TeamData.projectTitle,
-    projectSlogan: TeamData.projectSlogan,
-    members: TeamData.members,
-    features: TeamData.features,
-    releaseNotes: TeamData.releaseNotes,
-  );
+  // 优先从 GitHub Raw 远程加载数据，网络异常时自动回退到本地数据源
+  final repo = RemoteTeamRepository();
+  return repo.getTeamData();
 });
 
 class HomePage extends ConsumerWidget {
